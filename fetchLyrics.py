@@ -1,3 +1,4 @@
+import string
 import urllib2
 from bs4 import BeautifulSoup
 from optparse import OptionParser
@@ -44,13 +45,11 @@ class artist(object):
                 allLyrics += s.lyrics.lower()
         
         # Clean up string by stripping punctuation
-	#(maybe not so rubust since something like "s.s" wouldn't get 
-	#fully stripped...)
-        self.words = []
-        for s in allLyrics.split():
-            self.words.append(s.strip(".").strip(",").strip("!").strip("\"").strip("?").strip(":").strip(";").strip("(").strip(")").strip("'"))
-        
-    
+	exclude = set(string.punctuation)
+	allLyrics = ''.join(ch for ch in allLyrics if ch not in exclude)
+	
+	# Set self.words
+	self.words = allLyrics.split()
     # Write lyrics into a csv file
     def writeFile(self, fileName):
         fstr = ""
