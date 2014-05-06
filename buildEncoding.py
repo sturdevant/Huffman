@@ -1,8 +1,4 @@
-
-# coding: utf-8
-
-# In[378]:
-
+#!/usr/bin/env python
 import heapq as hp
 from optparse import OptionParser
 
@@ -81,8 +77,11 @@ for s in dFile.read().split(','):
 
 # Fill entries from aFile, adding 1 to them everytime the word is run into
 for s in aFile.read().split(','):
-    d[s] += 1
-
+    try:
+        d[s] += 1
+        print s
+    except:
+        print aFileName
 
 # In[383]:
 

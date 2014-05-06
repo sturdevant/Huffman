@@ -1,8 +1,4 @@
-
-# coding: utf-8
-
-# In[72]:
-
+#!/usr/bin/env python
 # Read cmdln args
 from optparse import OptionParser
 

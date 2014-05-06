@@ -1,9 +1,4 @@
-
-# coding: utf-8
-
-# In[98]:
-
-import glob
+#!/usr/bin/env python
 from optparse import OptionParser
 
 # Read cmdln args
@@ -12,16 +7,17 @@ parser.add_option("-o", "--out", dest="outFileName", help="Name of output file")
 (options, args) = parser.parse_args()
 
 
-# In[99]:
+# In[1]:
 
 outFileName = options.outFileName
+inFileName = args
 
 
 # In[100]:
 
 # Using set to avoid multiple entries of same word
 s = frozenset()
-for fileName in glob.glob("*.lyrics"):
+for fileName in inFileName:
     f = open(fileName, 'r')
     s = s.union(f.read().split(","))
     f.close()
@@ -37,9 +33,4 @@ fstr = fstr.strip(",")
 f = open(outFileName, 'wb')
 f.write(fstr)
 f.close()
-
-
-# In[ ]:
-
-
 
